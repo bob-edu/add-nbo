@@ -11,7 +11,10 @@ uint32_t readFile(char * fileName) {
     }
 
     uint32_t buffer;
-    size_t count = fread(&buffer, 1, 1024, fp);
+    size_t count = fread(&buffer, 1, 4, fp);
+    if (count != 4) {
+        fprintf(stderr, "[!] File size is not 4 bytes!\n");
+    }
 
     fclose(fp);
 
